@@ -1,6 +1,6 @@
 module Stn
   class Client
-    BASE = "https://router.api.beta.savethatname.com"
+    BASE = "https://router.api.savethatname.com"
 
     def self.headers
       {
