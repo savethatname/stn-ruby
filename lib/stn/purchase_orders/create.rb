@@ -19,7 +19,7 @@ module Stn
           string :title
         end
         hash :purchases do
-          
+
         end
       end
 
