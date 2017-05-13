@@ -5,7 +5,7 @@ require 'stn/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "stn-ruby"
-  spec.version       = Stn::Ruby::VERSION
+  spec.version       = Stn::VERSION
   spec.authors       = ["Jeremy Woertink"]
   spec.email         = ["jeremywoertink@gmail.com"]
 
@@ -31,6 +31,7 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   spec.add_dependency "httparty"
+  spec.add_dependency "mutations"
 
   spec.add_development_dependency "bundler", "~> 1.14"
   spec.add_development_dependency "rake", "~> 10.0"
