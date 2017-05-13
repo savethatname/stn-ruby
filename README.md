@@ -24,8 +24,8 @@ Stn.configure do |c|
   c.api_key = ENV["STN_API_KEY"]
 end
 
-client = Stn::Client.new
-client.post("purchase_orders", {...})
+po = Stn::PurchaseOrder.create({...})
+puts po # => hash result
 ```
 
 ## Development
