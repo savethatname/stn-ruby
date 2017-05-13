@@ -1,6 +1,6 @@
 module Stn
   class Client
-    BASE = "https://router.api.beta.savethatname.com"
+    BASE = "https://router.api.savethatname.com"
 
     def self.headers
       {
@@ -11,7 +11,7 @@ module Stn
     end
 
     def self.endpoint(path)
-      [BASE, "api", Stn.configuration.version, path].join("/")
+      [BASE, Stn.configuration.api_version, path].join("/")
     end
 
     def post(path, params = {})

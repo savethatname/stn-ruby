@@ -5,10 +5,10 @@ module Stn
     ).freeze
 
     OPTIONS.map(&method(:attr_accessor))
-    attr_reader :version
-    
+    attr_reader :api_version
+
     def initialize
-      @version = "v1"
+      @api_version = "v1"
     end
   end
 end
