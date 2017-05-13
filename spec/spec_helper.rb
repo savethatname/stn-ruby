@@ -1,5 +1,5 @@
 require "bundler/setup"
-require "stn/ruby"
+require "stn"
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
