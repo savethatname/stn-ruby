@@ -1,4 +1,8 @@
+require "httparty"
+require "mutations"
 require "stn/configuration"
+require "stn/client"
+require "stn/purchase_order"
 
 module Stn
   class << self
