@@ -20,6 +20,8 @@ Or install it yourself as:
 ## Usage
 
 ```ruby
+require "stn"
+
 Stn.configure do |c|
   c.api_key = ENV["STN_API_KEY"]
 end
