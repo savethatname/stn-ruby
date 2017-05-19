@@ -6,7 +6,7 @@
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'stn-ruby'
+gem 'stn-ruby', git: 'https://github.com/jwoertink/stn-ruby.git', require: "stn"
 ```
 
 And then execute:
@@ -20,8 +20,6 @@ Or install it yourself as:
 ## Usage
 
 ```ruby
-require "stn"
-
 Stn.configure do |c|
   c.api_key = ENV["STN_API_KEY"]
 end
