@@ -3,6 +3,7 @@ require "mutations"
 require "stn/configuration"
 require "stn/client"
 require "stn/purchase_order"
+require "stn/service"
 
 module Stn
   class << self
