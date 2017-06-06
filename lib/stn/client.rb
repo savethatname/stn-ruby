@@ -1,5 +1,6 @@
 module Stn
   class Client
+    include Stn::Cache
     BASE = "https://router.api.savethatname.com"
 
     def self.headers
