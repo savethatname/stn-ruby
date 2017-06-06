@@ -7,6 +7,10 @@ module Stn
       cache_service.fetch(key, options) { block.call }
     end
 
+    def cache_key(*keys)
+      keys.compact.join('/')
+    end
+
     def delete(key)
       if cache_available?
         cache_service.delete(key)
