@@ -36,7 +36,7 @@ module Stn
     end
 
     def cache_service
-      Stan.configuration.cache_service
+      Stn.configuration.cache_service
     end
   end
 end
