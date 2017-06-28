@@ -3,6 +3,7 @@ module Stn
     class Create < Mutations::Command
       required do
         string :user_email
+        string :stripe_token
         hash :profile do
           string :first_name
           string :last_name
