@@ -9,7 +9,7 @@ module Stn
       if outcome.success?
         outcome.result
       else
-        raise InvalidPurchaseOrderError, "PurchaseOrder is invalid"
+        raise InvalidPurchaseOrderError, "PurchaseOrder is invalid. #{outcome.errors.message_list.join(", ")}"
       end
     end 
   end
