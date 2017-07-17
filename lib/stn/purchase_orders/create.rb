@@ -39,6 +39,10 @@ module Stn
         end
       end
 
+      optional do
+        string :coupon_code, empty: true, discard_empty: true
+      end
+
       def execute
         po = Stn::PurchaseOrder.new
         result = po.post("purchase_orders", {purchase_order: inputs})
