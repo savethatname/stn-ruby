@@ -17,7 +17,7 @@ module Stn
     end
 
     def post(path, params = {})
-      HTTParty.post(Client.endpoint(path), headers: Client.headers, body: params)
+      HTTParty.post(Client.endpoint(path), headers: Client.headers, body: params.to_json)
     end
 
     def get(path, params = {})
