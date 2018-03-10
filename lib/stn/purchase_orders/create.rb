@@ -8,7 +8,7 @@ module Stn
           required do
             string :first_name
             string :last_name
-            string :birthday, matches: /\A\d{2}\/\d{2}\/\d{4}\z/
+            string :birthday, matches: /\A(0[1-9]|1[012])\/(0[1-9]|[12][0-9]|3[01])\/(19|20)\d\d\z/
             string :address1
             string :city
             string :state #, matches: /\A[A-Z]{2}\z/

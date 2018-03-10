@@ -37,5 +37,11 @@ RSpec.describe Stn::PurchaseOrders::Create do
       outcome = Stn::PurchaseOrders::Create.run(inputs)
       expect(outcome).to be_success
     end
+    
+    it "catches the birthday format" do
+      inputs[:profile][:birthday] = "31/01/1980"
+      outcome = Stn::PurchaseOrders::Create.run(inputs)
+      expect(outcome).to_not be_success    
+    end
   end
 end
