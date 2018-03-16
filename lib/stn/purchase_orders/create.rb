@@ -15,8 +15,6 @@ module Stn
             string :zip #, matches: /\A\d{5}\z/
             string :country
             string :phone
-            string :email
-            string :password
             string :title
           end
           optional do
