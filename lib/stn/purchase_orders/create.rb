@@ -16,6 +16,10 @@ module Stn
             string :country
             string :phone
             string :title
+
+            # Putting these back in until we can figure out why it fails without them
+            string :email
+            string :password
           end
           optional do
             string :address2, empty: true, discard_empty: true
