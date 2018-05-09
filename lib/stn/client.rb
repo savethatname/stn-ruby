@@ -2,7 +2,7 @@ module Stn
   class Client
     include Stn::Cache
     extend Stn::Cache
-    BASE = "https://router.api.savethatname.com"
+    BASE = "https://router.api.savethatname.com/api"
 
     def self.headers
       {
