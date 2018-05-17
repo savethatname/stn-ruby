@@ -47,8 +47,14 @@ module Stn
 
       def execute
         po = Stn::PurchaseOrder.new
-        result = po.post("purchase_orders", {purchase_order: inputs})
+        result = po.post("purchase_orders", {purchase_order: encoded_params})
         result
+      end
+
+      # force encodes all data from ISO to UTF8
+      private def encoded_params
+        inputs[:profile].each { |k,v| inputs[:profile][k] = v.force_encoding("ISO-8859-1").encode("UTF-8") if v.is_a?(String) }
+        inputs
       end
     end
   end
