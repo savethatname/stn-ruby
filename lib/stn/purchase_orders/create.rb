@@ -28,7 +28,7 @@ module Stn
         array :purchases do
           hash do
             required do
-              string :username
+              string :username, min_length: 3, max_length: 30, strip: true, matches: /^\S*$/
               array :services do
                 hash do
                   required do

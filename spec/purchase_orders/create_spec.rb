@@ -43,5 +43,11 @@ RSpec.describe Stn::PurchaseOrders::Create do
       outcome = Stn::PurchaseOrders::Create.run(inputs)
       expect(outcome).to_not be_success    
     end
+
+    it "catches spaces in the username" do
+      inputs[:purchases][0][:username] = "tester mc test"
+      outcome = Stn::PurchaseOrders::Create.run(inputs)
+      expect(outcome).to_not be_success
+    end
   end
 end
