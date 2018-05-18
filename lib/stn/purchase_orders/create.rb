@@ -29,7 +29,7 @@ module Stn
           hash do
             required do
               string :username, min_length: 3, max_length: 30, strip: true, matches: /^\S*$/
-              array :services do
+              array :services, min_length: 2 do
                 hash do
                   required do
                     string :name
