@@ -8,7 +8,7 @@ GIT
 PATH
   remote: .
   specs:
-    stn-ruby (0.2.3)
+    stn-ruby (0.2.4)
       httparty
 
 GEM
