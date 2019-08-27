@@ -6,7 +6,7 @@
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'stn-ruby', git: 'https://github.com/jwoertink/stn-ruby.git', require: "stn"
+gem 'stn-ruby', git: 'https://github.com/savethatname/stn-ruby.git', require: "stn"
 ```
 
 And then execute:
