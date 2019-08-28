@@ -1,0 +1,300 @@
+swagger: '2.0'
+info:
+  version: 1.0.0
+  title: Savethatname API
+  description: The Savethatname API
+  termsOfService: 'https://www.savethatname.com/terms/'
+  contact:
+    name: Savethatname API Team
+    email: admin@savethatname.com
+host: api.savethatname.com
+basePath: /api/v1
+consumes:
+  - application/json
+produces:
+  - application/json
+securityDefinitions:
+  api_key:
+    type: apiKey
+    name: X-API-KEY
+    in: header
+paths:
+  /purchase_orders:
+    post:
+      summary: Create purchase order
+      description: Create purchase order
+      operationId: POST_purchase_orders
+      parameters:
+        - name: body
+          in: body
+          schema:
+            $ref: '#/definitions/PurchaseOrder'
+      responses:
+        '200':
+          description: Purchase Order Creation Success
+          schema:
+            properties:
+              receipt:
+                $ref: '#/definitions/ReceiptResultIds'
+              results:
+                type: array
+                items:
+                  $ref: '#/definitions/Result'
+      security:
+        - api_key: []
+  '/searches/{id}':
+    get:
+      summary: Perform search for given name
+      description: Searches all available services for the name specified in the url
+      operationId: GET_searches-id
+      parameters:
+        - name: id
+          in: path
+          description: Name being searched for
+          required: true
+          type: string
+      responses:
+        '200':
+          description: Search Response
+          schema:
+            $ref: '#/definitions/Search'
+  /services:
+    get:
+      summary: Returns all enabled services
+      description: Returns a list of all services currently supported by Savethatname
+      operationId: GET_services
+      responses:
+        '200':
+          description: Searvices index success
+          schema:
+            properties:
+              services:
+                type: array
+                items:
+                  $ref: '#/definitions/Service'
+              service_types:
+                type: array
+                items:
+                  $ref: '#/definitions/ServiceType'
+definitions:
+  Profile:
+    allOf:
+      - $ref: '#/definitions/ProfileId'
+      - $ref: '#/definitions/ProfileBasic'
+  ProfileId:
+    properties:
+      id:
+        type: integer
+        format: int64
+  ProfileBasic:
+    required:
+      - first_name
+      - last_name
+      - birthday
+      - address1
+      - city
+      - state
+      - zip
+      - country
+      - phone
+      - email
+      - title
+    properties:
+      first_name:
+        type: string
+      last_name:
+        type: string
+      birthday:
+        type: string
+      address1:
+        type: string
+      address2:
+        type: string
+      city:
+        type: string
+      state:
+        type: string
+      zip:
+        type: string
+      country:
+        type: string
+      phone:
+        type: string
+      email:
+        type: string
+      title:
+        type: string
+      user_id:
+        type: integer
+        format: int64
+  PurchaseOrder:
+    required:
+      - user_email
+      - profile
+      - purchases
+      - stripe_token
+    properties:
+      user_email:
+        type: string
+      profile:
+        $ref: '#/definitions/Profile'
+      purchases:
+        type: array
+        items:
+          $ref: '#/definitions/Purchase'
+      stripe_token:
+        type: string
+  Purchase:
+    required:
+      - username
+      - services
+    properties:
+      username:
+        type: string
+      services:
+        type: array
+        items:
+          properties:
+            name:
+              type: string
+          required:
+            - name
+  ReceiptResultIds:
+    title: ReceiptResultIds
+    type: object
+    required:
+      - id
+    properties:
+      id:
+        type: integer
+        format: int64
+      name:
+        type: string
+      status:
+        type: string
+      created_at:
+        type: string
+      updated_at:
+        type: string
+      result_ids:
+        type: array
+        items:
+          type: integer
+          format: int64
+  Result:
+    required:
+      - id
+    properties:
+      accept_terms:
+        type: boolean
+      captcha_response:
+        type: string
+      captcha_url:
+        type: string
+      created_at:
+        type: string
+      id:
+        type: integer
+        format: int64
+      login_url:
+        type: string
+      name:
+        type: string
+      password:
+        type: string
+      price:
+        type: integer
+        format: int64
+      privacy_url:
+        type: string
+      require_accept_terms:
+        type: boolean
+      search_query:
+        type: string
+      status:
+        type: string
+      tos_url:
+        type: string
+      updated_at:
+        type: string
+      username:
+        type: string
+      original_proxymail_address:
+        type: string
+      lookup_id:
+        type: integer
+        format: int64
+  Search:
+    required:
+      - id
+    properties:
+      id:
+        type: string
+      query:
+        type: string
+      num_available:
+        type: integer
+        format: int64
+      num_taken:
+        type: integer
+        format: int64
+      num_timedout:
+        type: integer
+        format: int64
+      refreshed_at:
+        type: string
+      updated_at:
+        type: string
+      created_at:
+        type: string
+      charge_per_name_price:
+        type: integer
+        format: int64
+      discounted_with_purchased_domain_price:
+        type: integer
+        format: int64
+      discounted_with_any_domain_price:
+        type: integer
+        format: int64
+      username_billing_method:
+        type: string
+      lookup_ids:
+        type: array
+        items:
+          type: integer
+          format: int64
+  Service:
+    properties:
+      id:
+        type: integer
+        format: int64
+      name:
+        type: string
+      order:
+        type: integer
+        format: int64
+      price:
+        type: string
+      enabled:
+        type: boolean
+      coming_soon:
+        type: boolean
+      description:
+        type: string
+      created_at:
+        type: string
+      updated_at:
+        type: string
+      service_type_id:
+        type: integer
+  ServiceType:
+    properties:
+      id:
+        type: integer
+        format: int64
+      name:
+        type: string
+      created_at:
+        type: string
+      updated_at:
+        type: string
